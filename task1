@@ -1,0 +1,57 @@
+"""
+Task 1: Python Basics
+---------------------
+This program:
+  1. Prints a welcome message.
+  2. Takes Name, College Name and Branch as input.
+  3. Displays the entered information in a formatted output.
+"""
+
+from datetime import datetime
+
+WIDTH = 50  # width of the box used in the output
+
+
+def print_welcome():
+    """Print a decorative welcome message."""
+    print("╔" + "═" * (WIDTH - 2) + "╗")
+    print("║" + "WELCOME TO MY PYTHON PROGRAM".center(WIDTH - 2) + "║")
+    print("╚" + "═" * (WIDTH - 2) + "╝")
+    print("Please enter your details below.\n")
+
+
+def get_input(prompt):
+    """Keep asking until the user enters a non-empty value."""
+    while True:
+        value = input(prompt).strip()
+        if value:
+            return value.title()
+        print("  ⚠ This field cannot be empty. Please try again.")
+
+
+def display_info(name, college, branch):
+    """Display the collected information in a formatted card."""
+    line = "─" * (WIDTH - 2)
+    print("\n┌" + line + "┐")
+    print("│" + "STUDENT INFORMATION".center(WIDTH - 2) + "│")
+    print("├" + line + "┤")
+    print("│" + f"  Name    : {name}".ljust(WIDTH - 2) + "│")
+    print("│" + f"  College : {college}".ljust(WIDTH - 2) + "│")
+    print("│" + f"  Branch  : {branch}".ljust(WIDTH - 2) + "│")
+    print("├" + line + "┤")
+    stamp = datetime.now().strftime("%d %b %Y, %I:%M %p")
+    print("│" + f"  Submitted on: {stamp}".ljust(WIDTH - 2) + "│")
+    print("└" + line + "┘")
+    print(f"\nThank you, {name.split()[0]}! ")
+
+
+def main():
+    print_welcome()
+    name = get_input("Enter your Name         : ")
+    college = get_input("Enter your College Name  : ")
+    branch = get_input("Enter your Branch        : ")
+    display_info(name, college, branch)
+
+
+if __name__ == "__main__":
+    main()
